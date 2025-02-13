@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario y DOM</title>
+</head>
+<body>
+    <form id="myForm">
+        <label for="name">Producto:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="value">Valor:</label>
+        <input type="value" id="value" name="value" required>
+        <br>
+        <label for="cant">Cantidad:</label>
+        <input type="cant" id="cant" name="cant" required>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <h2>Datos del formulario:</h2>
+    <ul id="formData"></ul>
+
+    <script>
+        var total = 0;
+        const totalLi = document.createElement('li');
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío del formulario
+
+            // Obtiene los valores de los campos del formulario
+            const name = document.getElementById('name').value;
+            const value = document.getElementById('value').value;
+            const cant = document.getElementById('cant').value;
+
+            // Calcula el subtotal y actualiza el total
+            const subtotal = value * cant;
+            total += subtotal;
+
+            // Crea el texto a mostrar
+            const li = document.createElement('li');
+            li.textContent = `Nombre del producto: ${name}, Valor: ${value}, Cantidad: ${cant}, Subtotal: ${subtotal}`;
+            
+            // Convertir en Arreglo
+            document.getElementById('formData').appendChild(li);
+
+            // Actualiza el total en la última fila
+            totalLi.textContent = `Total: ${total}`;
+            document.getElementById('formData').appendChild(totalLi);
+
+            // Agrega el texto al elemento HTML
+            document.getElementById('name').value = '';
+            document.getElementById('value').value = ''
+            document.getElementById('cant').value = ''
+
+        });
+
+    </script>
+</body>
+</html>
