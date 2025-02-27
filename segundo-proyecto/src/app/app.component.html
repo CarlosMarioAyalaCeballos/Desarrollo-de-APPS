@@ -1,0 +1,21 @@
+<form id="myForm" (ngSubmit)="onSubmit()">
+  <label for="name">Producto:</label>
+  <input type="text" id="name" name="name" [(ngModel)]="name" required>
+  <br>
+  <label for="value">Valor:</label>
+  <input type="number" id="value" name="value" [(ngModel)]="value" required>
+  <br>
+  <label for="cant">Cantidad:</label>
+  <input type="number" id="cant" name="cant" [(ngModel)]="cant" required>
+  <br>
+  <button type="submit">Enviar</button>
+</form>
+
+<h2>Datos del formulario:</h2>
+<ul id="formData">
+  <li *ngFor="let item of items; let i = index">
+    Nombre del producto: {{ item.name }}, Valor: {{ item.value }}, Cantidad: {{ item.cant }}, Subtotal: {{ item.subtotal }}
+    <button (click)="removeItem(i)">Eliminar</button>
+  </li>
+  <li>Total: {{ total }}</li>
+</ul> 
