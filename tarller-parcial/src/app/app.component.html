@@ -1,0 +1,43 @@
+<h1>Calculadora de 2 números</h1>
+
+<div class="calculadora">
+  <h2>Primer número</h2>
+  <input type="number" [(ngModel)]="num1">
+  
+  <h2>Segundo número</h2>
+  <input type="number" [(ngModel)]="num2">
+  
+  <h2>Operación</h2>
+  <select [(ngModel)]="operation">
+    <option value="sum">Suma</option>
+    <option value="subtract">Resta</option>
+    <option value="multiply">Multiplicación</option>
+    <option value="divide">División</option>
+  </select>
+  
+  <button (click)="calculate()">Calcular</button>
+  
+  <h2>Resultado actual: {{ result }}</h2>
+</div>
+
+<div class="historial">
+  <h3>Historial de Operaciones</h3>
+  <div *ngFor="let operacion of historial; index as i" class="operacion-item">
+    <p>
+      {{ i + 1 }}.&nbsp;&nbsp;
+      {{ operacion.num1 }} 
+      {{ obtenerSimbolo(operacion.operacion) }} 
+      {{ operacion.num2 }} = 
+      <strong>{{ operacion.resultado }}</strong>
+    </p>
+    <small>{{ operacion.fecha | date:'dd/MM/yy HH:mm' }}</small>
+  </div>
+  <div *ngIf="historial.length === 0" class="sin-historial">
+    ⚠️ No hay operaciones registradas
+  </div>
+  <button (click)="historial = []" class="btn-limpiar">
+    🗑️ Limpiar historial
+  </button>
+</div>
+
+<router-outlet />

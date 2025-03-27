@@ -1,0 +1,218 @@
+/* Estilos generales */
+:host {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+  
+  h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  .calculadora {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+  }
+  
+  /* Inputs y controles */
+  input[type="number"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+  }
+  
+  select {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    background: white;
+    font-size: 1rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    background-size: 1em;
+  }
+  
+  button {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  button:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  }
+  
+  /* Resultado actual */
+  h2 {
+    color: #34495e;
+    margin: 1.5rem 0 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  h2:not(:first-of-type) {
+    margin-top: 1.5rem;
+  }
+  
+  /* Historial mejorado */
+  .historial {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .historial h3 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+  }
+  
+  .operacion-item {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    background: #f8f9fa;
+    transition: transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .operacion-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #007bff;
+  }
+  
+  .operacion-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  }
+  
+  .operacion-item p {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+  }
+  
+  .operacion-item strong {
+    color: #27ae60;
+    font-size: 1.2rem;
+  }
+  
+  /* Mensaje sin historial */
+  .sin-historial {
+    background: #fff9e6;
+    border: 2px dashed #ffe066;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    margin: 1rem 0;
+    color: #e67e22;
+    font-weight: 500;
+  }
+  
+  /* Botón limpiar */
+  .btn-limpiar {
+    background: #e74c3c;
+    width: auto;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    float: right;
+  }
+  
+  .btn-limpiar:hover {
+    background: #c0392b;
+  }
+  
+  /* Responsive Design */
+  @media (min-width: 768px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    
+    .calculadora {
+      margin-bottom: 0;
+    }
+    
+    .historial {
+      margin-top: 0;
+    }
+  }
+  
+  /* Animaciones */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .operacion-item {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  /* Scroll personalizado para historial largo */
+  .historial {
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  
+  .historial::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .historial::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .historial::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 4px;
+  }
+  
+  .historial::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+  }
