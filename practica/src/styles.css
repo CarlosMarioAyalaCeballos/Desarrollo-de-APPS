@@ -1,0 +1,9 @@
+.navbar-nav .nav-link {
+    color: rgb(44, 42, 45) !important;
+}
+.navbar-nav .nav-link:hover {
+    color: rgb(211, 112, 233) !important;
+}
+.navbar {
+    padding: 15px;
+}
